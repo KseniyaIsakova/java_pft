@@ -12,20 +12,20 @@ public class DistanceTests {
   public void testDistance1() {
     Point p1 = new Point(0.0,0.0);
     Point p2 = new Point(3.0,0.0);
-    Assert.assertEquals(p1.distance(p1, p2), 3.0);
+    Assert.assertEquals(p1.distance(p2), 3.0);
   }
 
   @Test
   public void testDistance2() {
     Point p1 = new Point(0.0,0.0);
     Point p2 = new Point(0.0,4.0);
-    Assert.assertEquals(p1.distance(p1, p2), 4.0);
+    Assert.assertEquals(p1.distance(p2), 4.0);
   }
 
   @Test
   public void testDistance3() {
     Point p1 = new Point(3.0,0.0);
-    Assert.assertEquals(p1.distance(p1, new Point (0.0,4.0)), 5.0);
+    Assert.assertEquals(p1.distance(new Point (0.0,4.0)), 5.0);
   }
 
 }

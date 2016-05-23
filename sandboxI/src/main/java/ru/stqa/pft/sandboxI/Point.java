@@ -5,17 +5,31 @@ package ru.stqa.pft.sandboxI;
  */
 public class Point {
 
-  public double x;
-  public double y;
+  private double x;
+  private double y;
 
   public Point(double x, double y) {
     this.x = x;
     this.y = y;
   }
 
-  public double distance(Point p1, Point p2) {
+  /**
+   * Получить координату х
+   * @return значение координаты
+   */
+  public double getX() {
 
-    return Math.sqrt((p2.x - p1.x) * (p2.x - p1.x) + (p2.y - p1.y) * (p2.y - p1.y));
+    return this.x;
+  }
+
+  public double getY() {
+
+    return this.y;
+  }
+
+  public double distance(Point p2) {
+
+    return Math.sqrt((p2.x - this.x) * (p2.x - this.x) + (p2.y - this.y) * (p2.y - this.y));
 
   }
 

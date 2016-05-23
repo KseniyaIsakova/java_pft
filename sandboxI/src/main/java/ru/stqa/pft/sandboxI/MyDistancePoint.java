@@ -12,7 +12,7 @@ public class MyDistancePoint {
 
     Point p2 = new Point(0.0, 4.0);
 
-    System.out.println("Расстояние между точками с координатами " + "(" + p1.x + ";" + p1.y + ") " + "и " + "(" + p2.x + ";" + p2.y + ") " + "равно "  + p1.distance(p1, p2));
+    System.out.println("Расстояние между точками с координатами " + "(" + p1.getX() + ";" + p1.getY() + ") " + "и " + "(" + p2.getX() + ";" + p2.getY() + ") " + "равно "  + p1.distance(p2));
 
   }
 

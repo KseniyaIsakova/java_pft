@@ -33,24 +33,24 @@ public class ContactCreationTests {
     @Test
     public void ContactCreationTests() {
         gotoAddNewPage();
-        contactData("Ivan", "Ivanov", "Samara", "89272008565");
+        fillContactData(new ContactData("Ivan", "Ivanov", "Samara", "89272008565"));
         submitContactCreation();
         returnContactPage();
     }
 
-    private void contactData(String firstname, String lastname, String address, String mobile) {
+    private void fillContactData(ContactData contactData) {
         wd.findElement(By.name("firstname")).click();
         wd.findElement(By.name("firstname")).clear();
-        wd.findElement(By.name("firstname")).sendKeys(firstname);
+        wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
         wd.findElement(By.name("lastname")).click();
         wd.findElement(By.name("lastname")).clear();
-        wd.findElement(By.name("lastname")).sendKeys(lastname);
+        wd.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
         wd.findElement(By.name("address")).click();
         wd.findElement(By.name("address")).clear();
-        wd.findElement(By.name("address")).sendKeys(address);
+        wd.findElement(By.name("address")).sendKeys(contactData.getAddress());
         wd.findElement(By.name("mobile")).click();
         wd.findElement(By.name("mobile")).clear();
-        wd.findElement(By.name("mobile")).sendKeys(mobile);
+        wd.findElement(By.name("mobile")).sendKeys(contactData.getMobile());
     }
 
     private void returnContactPage() {

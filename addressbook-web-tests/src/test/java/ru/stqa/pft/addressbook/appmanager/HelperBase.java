@@ -10,13 +10,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  * Created by Kseniya.Isakova on 28.05.2016.
  */
 public class HelperBase {
-  protected WebDriver wd;
+  protected static WebDriver wd;
 
   public HelperBase(WebDriver wd) {
     this.wd = wd;
   }
 
-  protected void click(By locator) {
+  protected static void click(By locator) {
     wd.findElement(locator).click();
   }
 
@@ -44,7 +44,7 @@ public class HelperBase {
     wd.switchTo().alert().accept();
   }
 
-  public boolean isElementPresent(By locator) {
+  public static boolean isElementPresent(By locator) {
     try {
       wd.findElement(locator);
       return true;

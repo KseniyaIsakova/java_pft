@@ -5,8 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Kseniya.Isakova on 28.05.2016.
@@ -36,12 +37,18 @@ public class ContactHelper extends HelperBase {
     wd.findElements(By.cssSelector("img[alt=\"Edit\"]")).get(index).click();
   }
 
+  public void initContactModificationById(int id) {
+    WebElement checkbox = wd.findElement(By.id("" + id));
+    checkbox.findElement(By.xpath("//td[8]/a")).click();
+  }
+
+
   public void submitContactModification() {
     click(By.name("update"));
   }
 
-  public void selectContact(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
+  public void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
 
   public void deleteSelectedContacts() {
@@ -55,15 +62,15 @@ public class ContactHelper extends HelperBase {
     returnContactPage();
   }
 
-  public void modify(int index, ContactData contact) {
-    initContactModification(index);
+  public void modify(ContactData contact) {
+    initContactModificationById(contact.getId());
     fillContactData(contact);
     submitContactModification();
     returnContactPage();
   }
 
-  public void delete(int index) {
-    selectContact(index);
+  public void delete(ContactData contact) {
+    selectContactById(contact.getId());
     deleteSelectedContacts();
     deleteAlert();
     NavigationHelper.homePage();
@@ -77,8 +84,8 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactData> list() {
-    List<ContactData> contacts = new ArrayList<ContactData>();
+  public Set<ContactData> all() {
+    Set<ContactData> contacts = new HashSet<ContactData>();
     List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
     for (WebElement element : elements) {
       String firstname = element.findElement(By.xpath("//td[3]")).getText();

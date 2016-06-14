@@ -3,17 +3,30 @@ package ru.stqa.pft.addressbook.model;
 public class ContactData {
   private int id = Integer.MAX_VALUE;
   private String firstname;
+  private String middlename;
   private String lastname;
+  private String nickname;
   private String address;
   private String homePhone;
   private String mobile;
   private String workPhone;
+  private String fax;
   private String allPhones;
   private String allEmails;
   private String email;
   private String email2;
   private String email3;
-
+  private String homepage;
+  private String birthday;
+  private String birthmonth;
+  private String birthyear;
+  private String aday;
+  private String amonth;
+  private String ayear;
+  private String anniversary;
+  private String notes;
+  private String company;
+  private String title;
 
   public ContactData withId(int id) {
     this.id = id;
@@ -25,8 +38,18 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withMiddlename(String middlename) {
+    this.middlename = middlename;
+    return this;
+  }
+
   public ContactData withLastname(String lastname) {
     this.lastname = lastname;
+    return this;
+  }
+
+  public ContactData withNickname(String nickname) {
+    this.nickname = nickname;
     return this;
   }
 
@@ -69,10 +92,80 @@ public class ContactData {
     this.email3 = email3;
     return this;
   }
+
   public ContactData withAllEmails(String allEmails) {
     this.allEmails = allEmails;
     return this;
   }
+
+  public ContactData withFax(String fax) {
+    this.fax = fax;
+    return this;
+  }
+
+
+  public ContactData withHomepage(String homepage) {
+    this.homepage = homepage;
+    return this;
+  }
+
+  public ContactData withBirthday(String birthday) {
+    this.birthday = birthday;
+    return this;
+  }
+
+
+  public ContactData withBirthmonth(String birthmonth) {
+    this.birthmonth = birthmonth;
+    return this;
+  }
+
+
+  public ContactData withBirthyear(String birthyear) {
+    this.birthyear = birthyear;
+    return this;
+  }
+
+
+  public ContactData withAday(String aday) {
+    this.aday = aday;
+    return this;
+  }
+
+
+  public ContactData withAmonth(String amonth) {
+    this.amonth = amonth;
+    return this;
+  }
+
+
+  public ContactData withAyear(String ayear) {
+    this.ayear = ayear;
+    return this;
+  }
+
+  public ContactData withAnniversary(String anniversary) {
+    this.anniversary = anniversary;
+    return this;
+  }
+
+  public ContactData withNotes(String notes) {
+    this.notes = notes;
+    return this;
+  }
+
+
+  public ContactData withCompany(String company) {
+    this.company = company;
+    return this;
+  }
+
+
+  public ContactData withTitle(String title) {
+    this.title = title;
+    return this;
+  }
+
 
   public int getId() {
     return id;
@@ -82,8 +175,16 @@ public class ContactData {
     return firstname;
   }
 
+  public String getMiddlename() {
+    return middlename;
+  }
+
   public String getLastname() {
     return lastname;
+  }
+
+  public String getNickname() {
+    return nickname;
   }
 
   public String getAddress() {
@@ -122,6 +223,53 @@ public class ContactData {
     return workPhone;
   }
 
+  public String getFax() {
+    return fax;
+  }
+
+  public String getHomepage() {
+    return homepage;
+  }
+
+  public String getBirthday() {
+    return birthday;
+  }
+
+  public String getBirthmonth() {
+    return birthmonth;
+  }
+
+  public String getBirthyear() {
+    return birthyear;
+  }
+
+  public String getAday() {
+    return aday;
+  }
+
+  public String getAmonth() {
+    return amonth;
+  }
+
+  public String getAyear() {
+    return ayear;
+  }
+
+  public String getAnniversary() {
+    return anniversary;
+  }
+
+  public String getNotes() {
+    return notes;
+  }
+
+  public String getCompany() {
+    return company;
+  }
+
+  public String getTitle() {
+    return title;
+  }
 
   @Override
   public String toString() {

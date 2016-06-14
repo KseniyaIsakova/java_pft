@@ -46,13 +46,19 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-  public void initContactModification(int index) {
-    wd.findElements(By.cssSelector("img[alt=\"Edit\"]")).get(index).click();
+  public void initContactModification() {
+    wd.findElement(By.xpath("//td[8]/a/img")).click();
   }
+
 
   public void initContactModificationById(int id) {
     WebElement checkbox = wd.findElement(By.id("" + id));
     checkbox.findElement(By.xpath("//td[8]/a")).click();
+  }
+
+  public void initContactCardForm(int id) {
+    WebElement checkbox = wd.findElement(By.id("" + id));
+    checkbox.findElement(By.xpath("//td[7]/a")).click();
   }
 
   public void submitContactModification() {
@@ -124,20 +130,49 @@ public class ContactHelper extends HelperBase {
   }
 
   public ContactData infoFromEditForm(ContactData contact) {
-    initContactModification(contact.getId());
+    initContactModification();
 
     String firstName = wd.findElement(By.name("firstname")).getAttribute("value");
+    String middleName = wd.findElement(By.name("middlename")).getAttribute("value");
     String lastName = wd.findElement(By.name("lastname")).getAttribute("value");
+    String nickName = wd.findElement(By.name("nickname")).getAttribute("value");
+    String company = wd.findElement(By.name("company")).getAttribute("value");
+    String title = wd.findElement(By.name("title")).getAttribute("value");
     String home = wd.findElement(By.name("home")).getAttribute("value");
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
+    String fax = wd.findElement(By.name("fax")).getAttribute("value");
     String email = wd.findElement(By.name("email")).getAttribute("value");
     String email2 = wd.findElement(By.name("email2")).getAttribute("value");
     String email3 = wd.findElement(By.name("email3")).getAttribute("value");
     String address = wd.findElement(By.name("address")).getAttribute("value");
+    String homePage = wd.findElement(By.name("homepage")).getAttribute("value");
+    String birthDay = wd.findElement(By.name("bday")).getAttribute("value");
+    String birthMonth = wd.findElement(By.name("bmonth")).getAttribute("value");
+    String birthYear = wd.findElement(By.name("byear")).getAttribute("value");
+    String aDay = wd.findElement(By.name("aday")).getAttribute("value");
+    String aMonth = wd.findElement(By.name("amonth")).getAttribute("value");
+    String aYear = wd.findElement(By.name("ayear")).getAttribute("value");
+    String notes = wd.findElement(By.name("notes")).getAttribute("value");
     wd.navigate().back();
-    return new ContactData().withId(contact.getId()).withFirstname(firstName).withLastname(lastName)
-            .withHomePhone(home).withMobile(mobile).withWorkPhone(work)
-            .withEmail(email).withEmail2(email2).withEmail3(email3).withAddress(address);
+    return new ContactData().withId(contact.getId()).withFirstname(firstName).withMiddlename(middleName)
+            .withLastname(lastName).withNickname(nickName).withCompany(company).withTitle(title)
+            .withHomePhone(home).withMobile(mobile).withWorkPhone(work).withFax(fax)
+            .withEmail(email).withEmail2(email2).withEmail3(email3).withAddress(address)
+            .withHomepage(homePage).withBirthday(birthDay).withBirthmonth(birthMonth).withBirthyear(birthYear)
+            .withAday(aDay).withAmonth(aMonth).withAyear(aYear)
+            .withNotes(notes)
+            ;
   }
+
+  public String allDate(String day, String month, String year) {
+    return day + ". " + month.replaceFirst("[\\D]{1}", month.substring(0, 1).toUpperCase()) + " " + year;
+  }
+
+  public String infoFromContactCard(ContactData contact) {
+    initContactCardForm(contact.getId());
+    String allRecordings = wd.findElement(By.xpath(".//*[@id = 'content']")).getText();
+    return allRecordings;
+  }
+
 }
